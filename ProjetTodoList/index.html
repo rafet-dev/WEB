@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ma première To-doList</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Original+Surfer&display=swap" rel="stylesheet">
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <main>
+            <table>
+                <thead>
+                     <caption><h1>Mes toDoList</h1></caption>
+                </thead>
+                <tbody>
+                    <th scope="table-gauche">
+                        <aside id="gauche">
+                            <h2>Listes</h2>
+                            <ul id="AfficherListes">
+                                <li>Travail</li>
+                                <li>Courses</li>
+                                <li>Projet</li>
+                            </ul>
+                            <button id="button-nouvelleListe">Nouvelle Liste</button>
+                            <pre id="resultat"></pre>
+                        </aside>
+                    </th>
+                    <th scope="table centre">
+                        <section id="liste">
+                            <h2>Liste en cours</h2>
+                            <h3 id="listeEnCours">Titre de la liste en cours</h3>
+                            <ul id="AfficherTaches">
+                                <li>
+                                    <input type="checkbox" id="option1" name="choix" value="1">
+                                    <label for="option1">Pain</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="option2" name="choix" value="2">
+                                    <label for="option2">Lait</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="option3" name="choix" value="3">
+                                    <label for="option3">Oeufs</label>
+                                </li>
+                            </ul>
+                            <button id="button-nouvelleTache">Ajouter une tâche</button>
+                                <input form="nouvelle-tache" id="option4" name="choix" value="4">
+                                <label for="option4"></label>
+                        </section>
+                    </th>
+                    <th scope="table-droite">            
+                        <aside id="droite">
+                            <h2>Recherche</h2>
+                            <search>
+                                <form action="/recherche" method="get">
+                                    <label for="site-search">Rechercher sur le site :</label>
+                                    <input type="search" id="site-search" name="q" placeholder="Rechercher ...">
+                                    <button type="submit">Rechercher</button>
+                                </form>
+                            </search>
+                        </aside>
+                    </th>
+                </tbody>   
+            </table>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>

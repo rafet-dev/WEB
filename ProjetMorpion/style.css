@@ -1,0 +1,52 @@
+:root
+{
+    box-sizing: border-box;
+    font-family: "Fira Sans", sans-serif;
+}
+
+table
+{
+    border: 5px groove grey;
+    height:350px;
+    width:350px;
+    background-color:palevioletred;
+    padding: 5px;
+}
+
+td
+{
+    border : 1px solid lightslategrayz;
+    height:100px;
+    width:100px;
+    display:inline-flex;
+    justify-content: space-around;
+    background-color: black;
+    text-align:center;
+    align-items: center;
+    font-size: 35px;
+    
+
+}
+
+.bouton
+{
+    margin-top:25px;
+    width:350px;
+    
+}
+
+.bouton button
+{
+    display:flex;
+    height:50px;
+    width: 150px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-left:100px;
+}
+
+td:hover
+{
+    background-color:coral;
+}

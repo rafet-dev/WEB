@@ -1,0 +1,64 @@
+:root
+{
+    box-sizing: border-box;
+    font-family: "Fira Sans", sans-serif;
+}
+
+
+input
+{
+    height:100px;
+    width:420px;
+    margin:10px;
+    font-size: 75px;
+    text-align: right;
+}
+
+#touches
+{
+    background-color:maroon;
+    width:450px;
+    height:450px;
+    padding:5px;
+    border-radius: 10px;
+   
+}
+
+#ligne
+{
+    display:flex;
+    justify-content:space-around;
+    margin:10px;
+}
+#case
+{
+    display:inline-block;
+    background-color:grey;
+    height:50px;
+    width:80px;
+    border : 2px solid blue;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#case a
+{
+    display: inline-block;
+    width:80%;
+    position:relative;
+    font-size : 40px;
+    color:antiquewhite;
+    text-align:center;
+    margin-left: 5px;
+    text-decoration:none;
+}
+
+#case:hover
+{
+    background-color: lightgray;
+}
+
+#case a:hover
+{
+    color:peru;
+}

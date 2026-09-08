@@ -2,3 +2,8 @@
 {
     box-sizing: border-box;
 }
+
+.tacheTerminee
+{
+    text-decoration: line-through;
+}

@@ -51,13 +51,11 @@ function afficherLesTaches(zoneAffichage, taches, listeTrouvee)
         {
             if(checkboxTache.checked)
             {
-                console.log("cochée");
                 checkboxTache.parentElement.classList.add("tacheTerminee");
             }
                     
             else
             {
-                console.log("non cochée");
                 checkboxTache.parentElement.classList.remove("tacheTerminee");
             }
         });
@@ -72,7 +70,7 @@ function afficherLesTaches(zoneAffichage, taches, listeTrouvee)
             event.stopPropagation();
             
             let nomTache = span.textContent;
-            let index = listeTrouvee.tableauTaches.indexOf(nomTache);
+            let index = listeTrouvee.tableauTaches.//indexOf(nomTache);
             listeTrouvee.tableauTaches.splice(index, 1);
             liTache.remove();
         });
@@ -91,9 +89,7 @@ function afficherLesTaches(zoneAffichage, taches, listeTrouvee)
             {
                 listeTrouvee.tableauTaches[index] = nouvelleValeurTache.trim();
                 nomSpan.textContent = nouvelleValeurTache.trim();
-            }
-
-           
+            }     
         });
     }
 }
@@ -109,8 +105,23 @@ function selectionnerListe(nomListe)
     }
 }
 
+function gererClicListe(nomListe)
+{
+    listeEnCours.innerText = nomListe;
+    selectionnerListe(nomListe);  
+}
+
+function supprimerListe(liste, elementHTML)
+{
+    let index = listes.indexOf(liste);
+    listes.splice(index, 1);
+    elementHTML.remove(); 
+
+}
+
 
 // Evènements
+
 listeHTML.forEach(function(element)
 {
     let boutonSupprimer = document.createElement("button");
@@ -123,9 +134,7 @@ listeHTML.forEach(function(element)
     boutonSupprimer.addEventListener("click", (event) =>
     {
         event.stopPropagation();
-        let index = listes.indexOf(listeTrouvee);
-        listes.splice(index, 1);
-        element.remove();
+        supprimerListe(listeTrouvee, element);
         console.log("suppression");
 
         if (listeSelectionnee === span.textContent)
@@ -138,9 +147,7 @@ listeHTML.forEach(function(element)
    
     element.addEventListener("click", () => 
     {
-        listeEnCours.innerText = span.textContent;
-        selectionnerListe(span.textContent);
-
+        gererClicListe(span.textContent);
         console.log("Liste sélectionnée : " + listeSelectionnee);
     });
 
@@ -151,13 +158,9 @@ nouvelleListe.addEventListener("click", () =>
 {
     let nomNouvelleListe = prompt("Saisissez le nom de votre nouvelle liste : ");
     
-    if(nomNouvelleListe === null)
+    if(nomNouvelleListe === null || nomNouvelleListe.trim() === "")
     {
-        resultat.innerText = "OK, ce sera peut-etre la prohaine fois !" ;
-    }
-    else if (nomNouvelleListe.trim() === "")
-    {
-        resultat.innerText = "créez votre nouvelle liste !";
+        resultat.innerText = "Ce sera pour une prochaine !"
     }
     else
     {
@@ -178,9 +181,7 @@ nouvelleListe.addEventListener("click", () =>
         
         li.addEventListener("click", () =>
         {
-            listeEnCours.innerText = span.textContent;
-
-            selectionnerListe(span.textContent);
+            gererClicListe(span.textContent);
         });
 
         let boutonSupprimer = document.createElement("button");
@@ -191,9 +192,7 @@ nouvelleListe.addEventListener("click", () =>
         {
             event.stopPropagation();
 
-            let index = listes.indexOf(nouvelleListeDeTaches);
-            listes.splice(index, 1);
-            li.remove();
+            supprimerListe(nouvelleListeDeTaches, li);
 
             if(listeSelectionnee === span.textContent)
             {
@@ -211,12 +210,7 @@ nouvelleTache.addEventListener("click", () =>
 {
     let nomNouvelleTache = prompt("quel est le nom de la nouvelle tâche ?");
 
-    if (nomNouvelleTache === null)
-    {
-        ;
-    }
-
-    else if (nomNouvelleTache.trim() === "")
+    if (nomNouvelleTache === null || nomNouvelleTache.trim() === "")
     {
         ;
     }
@@ -227,53 +221,8 @@ nouvelleTache.addEventListener("click", () =>
         
         if (listeTrouvee)
         {
-            const li = document.createElement("li");
-            let inputTache = document.createElement("input");
-            let span = document.createElement("span");
-            let boutonSupprimer = document.createElement("button");
-            boutonSupprimer.textContent = "Supprimer";
-            
-            span.textContent = nomNouvelleTache.trim();
-
-            afficherTache.append(li);
-            inputTache.type = "checkbox";
-            li.append(span);
-            li.append(inputTache);
-            
-            inputTache.addEventListener("change", () =>
-            {
-                if(inputTache.checked)
-                {
-                    inputTache.parentElement.classList.add("tacheTerminee");
-                }
-                
-                else 
-                {
-                    inputTache.parentElement.classList.remove("tacheTerminee");
-                }
-            });
-
-            inputTache.addEventListener("click", (event) =>
-            {
-                event.stopPropagation();
-            });
-
             listeTrouvee.tableauTaches.push(nomNouvelleTache.trim());
-
-            li.addEventListener("click", () =>
-            {
-                let nomSpan = li.querySelector("span");
-                let index = listeTrouvee.tableauTaches.indexOf(nomSpan.textContent);
-                
-                let nouvelleValeurTache = prompt("Quel est le nom de la nouvelle tâche ?");
-
-                if (nouvelleValeurTache !== null)
-                {
-                    listeTrouvee.tableauTaches[index] = nouvelleValeurTache;
-                    nomSpan.textContent = nouvelleValeurTache;
-                }
-
-            });       
+            afficherLesTaches(afficherTache, listeTrouvee.tableauTaches, listeTrouvee);
         }
 
         else
